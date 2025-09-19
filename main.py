@@ -18,15 +18,25 @@ def main():
 
     print("\n🔄 Processing... \n")
     
-    if choice == "1":
-        result = summarize_with_ai(text)
-    elif choice == "2":
-        result = summarize_with_truncation(text)
-    else:
-        result = "❌ Incorrect choice"
+    try:
+        if choice == "1":
+            result = summarize_with_ai(text)
+        elif choice == "2":
+            result = summarize_with_truncation(text)
+        else:
+            result = "❌ Incorrect choice"
+    except Exception as e:
+        result = f"An error occurred: {e}"
 
     print("📌 Result:\n")
     print(result)
+
+    save = input("\n Do you want to save the result to a file? (y/n): ")
+
+    if save.lower() == "y":
+        with open("summary.txt", "w", encoding="utf-8") as f:
+            f.write(result)
+        print("💾 Saved to summary.txt")
 
 if __name__ == "__main__":
     main()
