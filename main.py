@@ -1,4 +1,8 @@
 from transformers import pipeline
+import tkinter as tk
+from tkinter import scrolledtext, messagebox
+
+summarizer_pipeline = pipeline("summarization", model="facebook/bart-large-cnn")
 
 def summarize_with_ai(text):
     summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
